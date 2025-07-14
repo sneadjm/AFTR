@@ -1,12 +1,18 @@
-# React + Vite
+# A Friend That Remembers (AFTR) App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**In progress!**
 
-Currently, two official plugins are available:
+![alt text](christopher-martyn-_-ZzWO4jlRE-unsplash.jpg)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This project is a personal side project that reminds user's of important birthdays and provides a quick cache of relevant pictures of the person of honor for use in posts/stories. 
 
-## Expanding the ESLint configuration
+The app is made using a Python backend and React JS frontend. </br>
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+The final product will have the following functionality:
+- Users register accounts with email/password
+- Users add friends/family (will just refer to all as "friends" as umbrella moving forward) to database with a representative picture and birthday
+- App checks database daily to pull any friends that have a birthday today
+- If there is a friend with the birthday, app will parse user's photos (if given permission) to pull photos of the friend and remind user of friend's birthday with notifications.
+
+
+Made using assistance from Generative AI. 
