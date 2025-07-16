@@ -1,0 +1,7 @@
+fastapi
+jose
+passlib
+sqlalchemy
+dotenv
+pydantic[email]
+pillow

@@ -4,7 +4,7 @@
 
 ![alt text](christopher-martyn-_-ZzWO4jlRE-unsplash.jpg)
 
-This project is a personal side project that reminds user's of important birthdays and provides a quick cache of relevant pictures of the person of honor for use in posts/stories. 
+This project is a personal side project that reminds users of important birthdays and provides a quick cache of relevant pictures of the person of honor for use in posts/stories. 
 
 The app is made using a Python backend and React JS frontend. </br>
 
