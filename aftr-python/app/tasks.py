@@ -1,8 +1,8 @@
 from datetime import datetime, timedelta
-from app.database import SessionLocal
-from app import models
+from database import SessionLocal
+import models
 from celery_worker import celery_app
-from app.utils import email
+from utils import email
 
 @celery_app.task
 def check_birthdays():
