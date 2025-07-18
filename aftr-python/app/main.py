@@ -1,7 +1,7 @@
 from fastapi import FastAPI
-from routers import users, friends, photos
-from database import engine
-import models
+from app.routers import users, friends, photos
+from app.database import engine
+import app.models as models
 from fastapi.staticfiles import StaticFiles
 
 models.Base.metadata.create_all(bind=engine)

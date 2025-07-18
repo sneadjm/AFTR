@@ -1,12 +1,15 @@
-from fastapi import APIRouter, UploadFile, File, Depends
+from fastapi import APIRouter, UploadFile, File, Depends, HTTPException
 from sqlalchemy.orm import Session
-from app import models, database, auth
+from app import models, database, auth, schemas
 from datetime import datetime
 import os
 import shutil
+from typing import List
+
 from uuid import uuid4
 from PIL import Image
 from PIL.ExifTags import TAGS
+
 
 router = APIRouter(prefix="/photos", tags=["Photos"])
 
