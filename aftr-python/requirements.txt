@@ -1,7 +1,11 @@
 fastapi
-jose
+python-jose
 passlib
 sqlalchemy
 dotenv
 pydantic[email]
 pillow
+uvicorn
+psycopg2
+python-multipart
+celery

@@ -3,9 +3,8 @@ from passlib.context import CryptContext
 from fastapi.security import OAuth2PasswordBearer
 from fastapi import Depends, HTTPException, status
 from jose import JWTError
-import models
-import database
-from utils.token import verify_access_token
+import app.database as database
+from app.utils.token import verify_access_token
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/login")
@@ -28,6 +27,7 @@ def get_current_user(token: str = Depends(oauth2_scheme)):
 
     email = payload.get("sub")
     db = database.SessionLocal()
+    import models
     user = db.query(models.User).filter(models.User.email == email).first()
     if user is None:
         raise credentials_exception
