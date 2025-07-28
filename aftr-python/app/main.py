@@ -11,6 +11,10 @@ models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
+@app.get("/")
+def read_root():
+    return {"message": "Not everything is broken yet!"}
+
 app.include_router(users.router)
 app.include_router(friends.router)
 app.include_router(photos.router)
