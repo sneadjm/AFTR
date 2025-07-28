@@ -2,7 +2,13 @@
 
 **In progress!**
 
-![alt text](christopher-martyn-_-ZzWO4jlRE-unsplash.jpg)
+<div style="display: flex; align-items: flex-start; gap: 10px;">
+
+  <img src="christopher-martyn-_-ZzWO4jlRE-unsplash.jpg" alt="Bday Cake Picture" style="height: 500px; width: 66%; object-fit: cover;" />
+
+  <img src="login_page.png" alt="Current Login Page" style="height: 500px; width: 33%; object-fit: cover;" />
+
+</div>
 
 This project is a personal side project that reminds users of important birthdays and provides a quick cache of relevant pictures of the person of honor for use in posts/stories. 
 
