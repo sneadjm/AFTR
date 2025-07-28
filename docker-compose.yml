@@ -1,0 +1,62 @@
+version: "3.9"
+services:
+  frontend:
+    build: ./aftr-frontend
+    ports:
+      - "3000:3000"
+      - "5173:5173"
+    depends_on:
+      - backend
+
+  backend:
+    build: ./aftr-python
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    env_file:
+      - ./aftr-python/.env
+
+  celery:
+    build: ./aftr-python
+    command: celery -A app.celery_worker worker --loglevel=info
+    depends_on:
+      - backend
+      - redis
+    env_file:
+      - ./aftr-python/.env
+
+  celery-beat:
+    build: ./aftr-python
+    command: celery -A app.celery_worker beat --loglevel=info  --schedule /tmp/celerybeat-schedule
+    depends_on:
+      - backend
+      - redis
+    env_file:
+      - ./aftr-python/.env
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: supercooldev
+      POSTGRES_PASSWORD: supercooldev
+      POSTGRES_DB: aftrdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      #test: ["CMD-SHELL", "pg_isready -U supercooldev"]
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+volumes:
+  pgdata:
