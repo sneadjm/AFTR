@@ -1,24 +1,21 @@
-from fastapi import APIRouter, UploadFile, File, Depends
+from fastapi import APIRouter, UploadFile, File, Depends, HTTPException
 from sqlalchemy.orm import Session
-from app import models, database, auth
+from app import models, database, auth, schemas
+from app.utils.dependency import get_db
 from datetime import datetime
 import os
 import shutil
+from typing import List
+
 from uuid import uuid4
 from PIL import Image
 from PIL.ExifTags import TAGS
+
 
 router = APIRouter(prefix="/photos", tags=["Photos"])
 
 UPLOAD_DIR = "user_photos/"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
-
-def get_db():
-    db = database.SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
 
 def extract_taken_date(photo_path: str) -> datetime.date:
     try:

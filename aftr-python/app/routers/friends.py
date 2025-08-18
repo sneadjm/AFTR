@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException, UploadFile, File
 from sqlalchemy.orm import Session
 from app import models, schemas, database, auth
+from app.utils.dependency import get_db
 from typing import List, Optional
 import shutil
 import os
@@ -8,13 +9,6 @@ from uuid import uuid4
 from datetime import date
 
 router = APIRouter(prefix="/friends", tags=["Friends"])
-
-def get_db():
-    db = database.SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
 
 UPLOAD_DIR = "uploads/"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
